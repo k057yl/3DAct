@@ -117,8 +117,8 @@
 -define:TEXTCORE_FONT_ENGINE_1_5_OR_NEWER
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
--r:"C:/Users/User/Desktop/My project/Library/PackageCache/com.unity.testtools.codecoverage@1.2.2/lib/ReportGenerator/ReportGeneratorMerged.dll"
--r:"C:/Users/User/Desktop/My project/Library/PackageCache/com.unity.visualscripting@1.8.0/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
+-r:"D:/My project/Library/PackageCache/com.unity.testtools.codecoverage@1.2.2/lib/ReportGenerator/ReportGeneratorMerged.dll"
+-r:"D:/My project/Library/PackageCache/com.unity.visualscripting@1.8.0/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
 -r:"D:/Unity/2021.3.22f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"D:/Unity/2021.3.22f1/Editor/Data/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"
 -r:"D:/Unity/2021.3.22f1/Editor/Data/Managed/UnityEngine/UnityEditor.DiagnosticsModule.dll"
@@ -358,15 +358,7 @@
 "Assets/Scripts/MVC/CharController.cs"
 "Assets/Scripts/MVC/IMoving.cs"
 "Assets/Scripts/NewInput.cs"
-"Assets/Scripts/Player/IJumping.cs"
-"Assets/Scripts/Player/IMovable.cs"
-"Assets/Scripts/Player/IPositionable.cs"
-"Assets/Scripts/Player/MovementController.cs"
-"Assets/Scripts/Player/PlayerConfig.cs"
-"Assets/Scripts/Player/PlayerController.cs"
-"Assets/Scripts/Player/PlayerModel.cs"
-"Assets/Scripts/Player/PlayerView.cs"
-"Assets/Scripts/Player/ReadInput.cs"
+"Assets/Scripts/PlayerConfig.cs"
 -langversion:9.0
 
 /deterministic

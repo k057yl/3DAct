@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
     //[SerializeField] private PlayerController _playerPrefab;
     [SerializeField] private Camera _cam;
 
-    private PlayerController _playerController;
+   
     private Camera _camera;
     
 

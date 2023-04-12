@@ -128,6 +128,11 @@ CharacterController:
   m_CorrespondingSourceObject: {fileID: 1520073116, guid: 289776fe3bd3061428995a16706fcd90, type: 3}
   m_PrefabInstance: {fileID: 295662488}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &46491308 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1572398456733327532, guid: 289776fe3bd3061428995a16706fcd90, type: 3}
+  m_PrefabInstance: {fileID: 295662488}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &203090840
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,10 +213,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 328061100788185651, guid: 289776fe3bd3061428995a16706fcd90, type: 3}
-      propertyPath: _characterController
+    - target: {fileID: 1647579938705188123, guid: 289776fe3bd3061428995a16706fcd90, type: 3}
+      propertyPath: _animator
       value: 
-      objectReference: {fileID: 39787249}
+      objectReference: {fileID: 1389422340}
     - target: {fileID: 1647579938705188123, guid: 289776fe3bd3061428995a16706fcd90, type: 3}
       propertyPath: GroundChecker
       value: 
@@ -224,6 +229,14 @@ PrefabInstance:
       propertyPath: _groundChecker
       value: 
       objectReference: {fileID: 289649946}
+    - target: {fileID: 1647579938705188123, guid: 289776fe3bd3061428995a16706fcd90, type: 3}
+      propertyPath: _startPosition
+      value: 
+      objectReference: {fileID: 1389422342}
+    - target: {fileID: 1647579938705188123, guid: 289776fe3bd3061428995a16706fcd90, type: 3}
+      propertyPath: _targetPosirion
+      value: 
+      objectReference: {fileID: 46491308}
     - target: {fileID: 1647579938705188123, guid: 289776fe3bd3061428995a16706fcd90, type: 3}
       propertyPath: _characterCamera
       value: 
@@ -280,8 +293,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 817778404, guid: 289776fe3bd3061428995a16706fcd90, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 289776fe3bd3061428995a16706fcd90, type: 3}
 --- !u!1 &669117423
 GameObject:
@@ -853,6 +865,16 @@ CanvasRenderer:
 --- !u!4 &1371883395 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3766916366097301169, guid: 289776fe3bd3061428995a16706fcd90, type: 3}
+  m_PrefabInstance: {fileID: 295662488}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1389422340 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1520073122, guid: 289776fe3bd3061428995a16706fcd90, type: 3}
+  m_PrefabInstance: {fileID: 295662488}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1389422342 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6033832278521436888, guid: 289776fe3bd3061428995a16706fcd90, type: 3}
   m_PrefabInstance: {fileID: 295662488}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1529818850

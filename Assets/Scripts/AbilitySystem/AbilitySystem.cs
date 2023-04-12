@@ -1,7 +1,6 @@
-using UnityEngine;
-
-public class AbilitySystem : MonoBehaviour
+public class AbilitySystem 
 {
+    /*
     private IAbility _currentAbility;
 
     public void SetAbility(IAbility ability)
@@ -23,4 +22,5 @@ public class AbilitySystem : MonoBehaviour
     {
         _currentAbility.ExecuteAbility();
     }
+    */
 }

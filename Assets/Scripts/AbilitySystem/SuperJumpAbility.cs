@@ -2,42 +2,50 @@ using UnityEngine;
 
 public class SuperJumpAbility : IAbility
 {
-    private CharacterController _characterController;
-    private Transform _targetPosirion;
     
+    private CharacterController _characterController;
+    private PlayerConfig _playerConfig;
+    private CharController _charController;
+    private Transform _targetPosition;
+    private Vector3 _target;//
+    private Transform _start;//
     private Vector3 _startPosition;
-    private float _jumpStartTime;
 
-    public SuperJumpAbility(CharacterController characterController, Transform targetPosirion, Vector3 startPosition, float jumpStartTime)
+    public SuperJumpAbility(CharacterController characterController, PlayerConfig playerConfig, CharController charController,
+        Transform targetPosition, Vector3 startPosition)
     {
         _characterController = characterController;
-        _targetPosirion = targetPosirion;
+        _playerConfig = playerConfig;
+        _charController = charController;
+        _targetPosition = targetPosition;
         _startPosition = startPosition;
-        _jumpStartTime = jumpStartTime;
     }
     
-    public void StartJump()
+    public SuperJumpAbility(CharacterController characterController, PlayerConfig playerConfig, Transform start,
+        Transform targetPosition)
     {
-        _startPosition = _characterController.transform.position;
-        _jumpStartTime = Time.time;
+        _characterController = characterController;
+        _playerConfig = playerConfig;
+        _start = start;
+        _targetPosition = targetPosition;
     }
+    
     
     public void ActivateAbility()
     {
-        float timeSinceJumpStarted = Time.time - _jumpStartTime;
-        float normalizedTime = Mathf.Clamp01(timeSinceJumpStarted / 1f);
-        float jumpCurveValue = Mathf.Sin(normalizedTime * Mathf.PI);
- 
-        _characterController.transform.position = Vector3.Lerp(_startPosition, _targetPosirion.position, jumpCurveValue) + Vector3.up * 2f * jumpCurveValue;
+        Vector3 direction = (_targetPosition.position - _start.position).normalized;
+
+        _characterController.SimpleMove( new Vector3(direction.x, 0f, direction.z) * _playerConfig.Speed);
     }
 
     public void DeactivateAbility()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void ExecuteAbility()
     {
-        throw new System.NotImplementedException();
+        
     }
+    
 }

@@ -11,7 +11,6 @@ public class CharacterModel : IMoving
 
     private Transform _groundChecker;
     private float _velocity;
-    
     private float _mouseDeltaX;
     private float _mouseDeltaY;
     private float _xRotation;
@@ -26,28 +25,37 @@ public class CharacterModel : IMoving
         _characterCamera = characterCamera;
     }
     
-    public void Move(Vector3 direction, float speed)
+    public void Move(Vector3 direction)
     {
         DoGravity();
         
         var characterTransform = _charController.transform;
         direction = characterTransform.right * direction.x + characterTransform.forward * direction.z;
         
-        _characterController.Move(direction * (speed * Time.deltaTime));
+        _characterController.Move(direction * (_playerConfig.Speed * Time.deltaTime));
     }
 
-    public void Rotate(float mouseDeltaX, float mouseDeltaY)
+    public void RotateX(float mouseDeltaX)
     {
-        _xRotation -= _mouseDeltaY;
-        
-        _xRotation = Mathf.Clamp(_xRotation, -90, 90);
-
-        _characterCamera.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
+        _mouseDeltaX = mouseDeltaX;
         
         _charController.transform.Rotate(Vector3.up * mouseDeltaX);
     }
+
+    public void RotateY(float mouseDeltaX, float mouseDeltaY)
+    {
+        _mouseDeltaX = mouseDeltaX;
+        _mouseDeltaY = mouseDeltaY;
+        
+        _xRotation -= _mouseDeltaY;
+
+        _xRotation = Mathf.Clamp(_xRotation, -90, 90);
+
+        _characterCamera.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
+        _charController.transform.Rotate(Vector3.up * _mouseDeltaX);
+    }
     
-    public void Jump(float jumpHeight)
+    public void Jump()
     {
         bool isGrounded = IsGround();
         if (isGrounded)
