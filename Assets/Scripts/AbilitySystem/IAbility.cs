@@ -1,8 +1,9 @@
+using System.Collections;
 using UnityEngine;
 
 public interface IAbility
 {
     void ActivateAbility();
-    //void DeactivateAbility();
-    //void ExecuteAbility();
+    void DeactivateAbility();
+    IEnumerator ExecuteAbility(Transform targetTransform);
 }

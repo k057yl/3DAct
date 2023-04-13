@@ -15,13 +15,12 @@ public class CharacterModel : IMoving
     private float _mouseDeltaY;
     private float _xRotation;
 
-    public CharacterModel(CharacterController characterController, PlayerConfig playerConfig, CharController charController, Transform groundChecker, float velocity, Transform characterCamera)
+    public CharacterModel(CharacterController characterController, PlayerConfig playerConfig, CharController charController, Transform groundChecker, Transform characterCamera)
     {
         _characterController = characterController;
         _playerConfig = playerConfig;
         _charController = charController;
         _groundChecker = groundChecker;
-        _velocity = velocity;
         _characterCamera = characterCamera;
     }
     

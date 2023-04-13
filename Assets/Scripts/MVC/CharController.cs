@@ -9,12 +9,11 @@ public class CharController : MonoBehaviour
     [SerializeField] private Transform _characterCamera;
     [SerializeField] private Animator _animator;
     
-    [SerializeField] private Transform _targetPosirion;//
-    [SerializeField] private Transform _startPosition;
+    [SerializeField] private Transform _targetPosition;//
+   // [SerializeField] private Transform _startPosition;//
 
     private IMoving _moving;
     private IAbility _superJump;//
-    
     private NewInput _newInput;
     
     
@@ -26,17 +25,12 @@ public class CharController : MonoBehaviour
     private float _keyboardSpace;
     private float _keyboardF;
     
-    private float _velocity;
-    
-    //private Vector3 _characterPosition;//
-    
     
     private void Start()
     {
-        _moving = new CharacterModel(_characterController, _playerConfig, this, _groundChecker, _velocity, _characterCamera);
+        _moving = new CharacterModel(_characterController, _playerConfig, this, _groundChecker, _characterCamera);
         
-        //_superJump = new SuperJumpAbility(_characterController, _playerConfig, this, _targetPosirion, _direction);//
-        _superJump = new SuperJumpAbility(_characterController, _playerConfig, _startPosition, _targetPosirion);
+        _superJump = new SuperJumpAbility(_characterController, _playerConfig);
         
         _newInput = new NewInput();
         _newInput.Enable();
@@ -57,15 +51,14 @@ public class CharController : MonoBehaviour
         {
             _moving.RotateY(_mouseDeltaX, _mouseDeltaY);
         }
-
-        if (_keyboardF != 0)
-        {
-            _superJump.ActivateAbility();
-        }
     }
 
     private void Update()
     {
+        if (_keyboardF != 0)
+        {
+            StartCoroutine(_superJump.ExecuteAbility(_targetPosition));
+        }
         ReadKeyboard();
         float moveSpeed = _characterController.velocity.magnitude;
         _animator.SetFloat("MoveSpeed", moveSpeed);

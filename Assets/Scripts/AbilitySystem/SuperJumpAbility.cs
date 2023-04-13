@@ -1,51 +1,45 @@
+using System.Collections;
 using UnityEngine;
 
 public class SuperJumpAbility : IAbility
 {
-    
     private CharacterController _characterController;
     private PlayerConfig _playerConfig;
-    private CharController _charController;
-    private Transform _targetPosition;
-    private Vector3 _target;//
-    private Transform _start;//
-    private Vector3 _startPosition;
-
-    public SuperJumpAbility(CharacterController characterController, PlayerConfig playerConfig, CharController charController,
-        Transform targetPosition, Vector3 startPosition)
-    {
-        _characterController = characterController;
-        _playerConfig = playerConfig;
-        _charController = charController;
-        _targetPosition = targetPosition;
-        _startPosition = startPosition;
-    }
     
-    public SuperJumpAbility(CharacterController characterController, PlayerConfig playerConfig, Transform start,
-        Transform targetPosition)
+    public SuperJumpAbility(CharacterController controller, PlayerConfig playerConfig)
     {
-        _characterController = characterController;
+        _characterController = controller;
         _playerConfig = playerConfig;
-        _start = start;
-        _targetPosition = targetPosition;
     }
-    
     
     public void ActivateAbility()
     {
-        Vector3 direction = (_targetPosition.position - _start.position).normalized;
-
-        _characterController.SimpleMove( new Vector3(direction.x, 0f, direction.z) * _playerConfig.Speed);
+        throw new System.NotImplementedException();
     }
 
     public void DeactivateAbility()
     {
-        
+        throw new System.NotImplementedException();
     }
 
-    public void ExecuteAbility()
+    public IEnumerator ExecuteAbility(Transform targetTransform)
     {
-        
+        Vector3 startPosition = _characterController.transform.position;
+        Vector3 targetPosition = targetTransform.position;
+        float distance = Vector3.Distance(startPosition, targetPosition);
+
+        float timeToJump = Mathf.Sqrt(2f * _playerConfig.JumpHeight / Physics.gravity.magnitude) + Mathf.Sqrt(2f * (distance - _playerConfig.JumpHeight) / Physics.gravity.magnitude);
+        float jumpVelocity = Mathf.Sqrt(2f * Physics.gravity.magnitude * _playerConfig.JumpHeight);
+
+        float elapsedTime = 0f;
+        while (elapsedTime < timeToJump)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / timeToJump;
+            Vector3 nextPosition = Vector3.Lerp(startPosition, targetPosition, t);
+            nextPosition.y = startPosition.y + jumpVelocity * t - 0.5f * Physics.gravity.magnitude * t * t;
+            _characterController.Move(nextPosition - _characterController.transform.position);
+            yield return null;
+        }
     }
-    
 }
